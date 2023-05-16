@@ -4,16 +4,23 @@ $(document).ready(function() {
 
     // console.log("hello world")
     $(".card").click(function() {
-        $(this).toggleClass("flipped");
+        if (!$(this).hasClass("flipped")) {
+            $(this).toggleClass("flipped");
+        }
         if (!firstCard) {
             firstCard = {};
             firstCard.img = $(this).find(".front_face img")[0];
             firstCard.cardID = $(this).attr("id");
+            // $(`#${firstCard.cardID}`).off("click");
         }
         else {
             secondCard = {};
             secondCard.img = $(this).find(".front_face img")[0];
             secondCard.cardID = $(this).attr("id");
+            if (firstCard.cardID === secondCard.cardID) {
+                secondCard = undefined;
+                return;
+            }
             if(firstCard.img.src === secondCard.img.src) {
                 console.log("match");
                 $(`#${firstCard.cardID}`).off("click");
