@@ -41,3 +41,7 @@ img {
     transform: rotateY(180deg);
     
 }
+
+#header {
+    text-align: center;
+}

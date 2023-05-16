@@ -2,7 +2,10 @@ $(document).ready(function() {
     let firstCard = undefined;
     let secondCard = undefined;
     let cards = $(".card");    
-    let flippedCards = 0
+    let flippedCards = 0;
+    let clicks = 0;
+
+    $("#totalPairs").text(cards.length / 2)
 
     $(".card").click(function() {
         if (firstCard && secondCard) {
@@ -15,6 +18,8 @@ $(document).ready(function() {
             firstCard = {};
             firstCard.img = $(this).find(".front_face img")[0];
             firstCard.cardID = $(this).attr("id");
+            clicks++;
+            $("#numClicks").text(clicks);
         }
         else {
             secondCard = {};
@@ -31,6 +36,7 @@ $(document).ready(function() {
                 firstCard = undefined;
                 secondCard = undefined;
                 flippedCards += 2;
+                $("#numPairs").text(flippedCards / 2)
                 if (flippedCards === cards.length) {
                     setTimeout(function() {
                         alert("You win!");
@@ -47,6 +53,8 @@ $(document).ready(function() {
                     secondCard = undefined;
                 }, 1000);
             }
+            clicks++;
+            $("#numClicks").text(clicks);
         }
     });
 });
