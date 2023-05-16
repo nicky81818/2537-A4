@@ -5,6 +5,21 @@ $(document).ready(function() {
     let flippedCards = 0;
     let clicks = 0;
 
+    let time = 100 * 1000; // 100 seconds
+    $("#totalTime").text(time / 1000);
+    $("#timer").text(time / 1000);
+    let timer = setInterval(function() {
+        time -= 1000;
+        $("#timer").text(time / 1000);
+        if (time === 0) {
+            clearInterval(timer);
+            console.log("time is up");
+            $("#game_grid").empty()
+            $("#game_grid").append(`<h1>Game Over!
+                <button onclick="location.reload()">Play Again</button>
+            </h1>`);
+        }
+    }, 1000);
     $("#totalPairs").text(cards.length / 2)
 
     $(".card").click(function() {
@@ -39,6 +54,7 @@ $(document).ready(function() {
                 $("#numPairs").text(flippedCards / 2)
                 if (flippedCards === cards.length) {
                     setTimeout(function() {
+                        clearInterval(timer);
                         alert("You win!");
                     }, 1000);    
                 }
