@@ -13,8 +13,13 @@ body {
 
 
 .card {
+    all: unset;
     width: 33.3%;
     position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition-property: all;
+    transition: 1s;
 }
 
 
@@ -25,4 +30,14 @@ img {
 .front_face,
 .back_face {
     position: absolute;
+    backface-visibility: hidden;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.front_face {
+    transform: rotateY(180deg);
+    
 }
