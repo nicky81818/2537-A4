@@ -1,8 +1,9 @@
 $(document).ready(function() {
     let firstCard = undefined;
     let secondCard = undefined;
+    let cards = $(".card");    
+    let flippedCards = 0
 
-    // console.log("hello world")
     $(".card").click(function() {
         if (firstCard && secondCard) {
             return;
@@ -14,7 +15,6 @@ $(document).ready(function() {
             firstCard = {};
             firstCard.img = $(this).find(".front_face img")[0];
             firstCard.cardID = $(this).attr("id");
-            // $(`#${firstCard.cardID}`).off("click");
         }
         else {
             secondCard = {};
@@ -30,6 +30,13 @@ $(document).ready(function() {
                 $(`#${secondCard.cardID}`).off("click");
                 firstCard = undefined;
                 secondCard = undefined;
+                flippedCards += 2;
+                if (flippedCards === cards.length) {
+                    setTimeout(function() {
+                        alert("You win!");
+                    }, 1000);    
+                }
+
             }
             else {
                 console.log("no match");
