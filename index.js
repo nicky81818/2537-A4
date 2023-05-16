@@ -4,6 +4,9 @@ $(document).ready(function() {
 
     // console.log("hello world")
     $(".card").click(function() {
+        if (firstCard && secondCard) {
+            return;
+        }
         if (!$(this).hasClass("flipped")) {
             $(this).toggleClass("flipped");
         }
