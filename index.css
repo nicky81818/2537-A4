@@ -13,7 +13,7 @@ body {
 
 
 .card {
-    all: unset;
+    /* all: unset; */
     width: 33.3%;
     position: relative;
     perspective: 1000px;
