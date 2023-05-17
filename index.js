@@ -4,6 +4,7 @@ $(document).ready(function() {
     let cards = $(".card");    
     let flippedCards = 0;
     let clicks = 0;
+    $("#totalPairs").text(cards.length / 2)
 
     let time = 100 * 1000; // 100 seconds
     $("#totalTime").text(time / 1000);
@@ -20,8 +21,33 @@ $(document).ready(function() {
             </h1>`);
         }
     }, 1000);
-    $("#totalPairs").text(cards.length / 2)
 
+    $("button#resetBtn").click(function() {
+        console.log("reset");
+        clearInterval(timer);
+        $("#game_grid").remove()
+        $("button#startBtn").show();
+    });
+
+    $("button#startBtn").click(function() {
+        console.log("start");
+        $("#header").after(`<div id="game_grid"></div>`);
+        // $("#game_grid").append(cards);
+        $("button#startBtn").hide();
+        time = 100 * 1000; // 100 seconds
+        timer = setInterval(function() {
+            $("#timer").text(time / 1000);
+            time -= 1000;
+            if (time === 0) {
+                clearInterval(timer);
+                console.log("time is up");
+                $("#game_grid").empty()
+                $("#game_grid").append(`<h1>Game Over!
+                    <button onclick="location.reload()">Play Again</button>
+                </h1>`);
+            }
+        }, 1000);;
+    });
     $(".card").click(function() {
         if (firstCard && secondCard) {
             return;
