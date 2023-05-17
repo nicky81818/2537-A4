@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "Pokémon DP Pro";
+    src: url(pokemon-dp-pro.ttf);
+}
+
 body {
     margin: 0px;
+    font-family: "Pokémon DP Pro";
 }
 
 #game_grid {
