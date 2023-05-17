@@ -14,7 +14,8 @@ body {
 
 .card {
     /* all: unset; */
-    width: 33.3%;
+    width: 200px;
+    height: 200px;
     position: relative;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -44,4 +45,16 @@ img {
 
 #header {
     text-align: center;
+}
+.active {
+    background-color: cornflowerblue;
+    color: white;
+}
+.medium {
+    width: 800px !important;
+    height: 600px !important;
+}
+.hard {
+    width: 1200px !important;
+    height: 800px !important;
 }

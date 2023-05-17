@@ -1,6 +1,8 @@
 const EASY = 6/2
 const MEDIUM = 12/2
-const HARD = 20/2
+const HARD = 24/2
+let mode = 'easy'
+let time = 100 * 1000; // 100 seconds
 
 
 function getPokemon(gamemode) {
@@ -15,8 +17,21 @@ function getPokemon(gamemode) {
 }
 
 
-function populateGameBoard(mode) {
-    let pokemons = getPokemon(mode)
+function populateGameBoard(gamemode) {
+    $('#game_grid').removeClass();
+    if (gamemode === 'easy') {
+        size = EASY;
+        time = 100 * 1000;
+    } else if (gamemode === 'medium') {
+        size = MEDIUM;
+        $('#game_grid').addClass("medium");
+        time = 200 * 1000;
+    } else {
+        size = HARD;
+        $('#game_grid').addClass("hard");
+        time = 300 * 1000;
+    }
+    let pokemons = getPokemon(size)
     pokemons = shuffleArray(pokemons.concat(pokemons))
     let i = 1
     pokemons.forEach(pokemon => {
@@ -49,9 +64,17 @@ function shuffleArray(arr) {
     return arr;
 }
 
+function changeActive() {
+    $("button.mode").click(function() {
+        $("button.mode").removeClass("active");
+        $(this).addClass("active");
+        mode = $(this).attr("id")
+    })
+}
+
 $(document).ready(function() {
     $("#timeResults").hide()
-
+    changeActive()
     $("button#resetBtn").click(function() {
         console.log("reset");
         clearInterval(timer);
@@ -61,11 +84,9 @@ $(document).ready(function() {
     $("button#startBtn").click(function() {
         console.log("start");
         $("#header").after(`<div id="game_grid"></div>`)
-        // $("#game_grid").empty()
-        populateGameBoard(EASY)
+        populateGameBoard(mode)
         $("button#startBtn").hide();
         $("#timeResults").show()
-        let time = 100 * 1000; // 100 seconds
         $("#totalTime").text(time / 1000);
         $("#timer").text(time / 1000);
         timer = setInterval(function() {
