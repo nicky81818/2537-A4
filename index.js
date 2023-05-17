@@ -10,7 +10,7 @@ function getPokemon(gamemode) {
     let randomNums = randomList(gamemode)
     for (let i=0; i < gamemode; i++) {
         console.log(randomNums[i])
-        pokemonURLS.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomNums[i]}.png`)
+        pokemonURLS.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/${randomNums[i]}.png`)
     }
     return pokemonURLS
 }
@@ -134,6 +134,8 @@ $(document).ready(function() {
                     console.log("match");
                     $(`#${firstCard.cardID}`).off("click");
                     $(`#${secondCard.cardID}`).off("click");
+                    $(`#${firstCard.cardID}`).addClass("done");
+                    $(`#${secondCard.cardID}`).addClass("done");
                     firstCard = undefined;
                     secondCard = undefined;
                     flippedCards += 2;
@@ -154,6 +156,13 @@ $(document).ready(function() {
                         firstCard = undefined;
                         secondCard = undefined;
                     }, 1000);
+                    if (clicks % 5 === 0) {
+                        alert("Power up!")
+                        $(".card").not(".done").toggleClass("flipped");
+                        setTimeout(function() {
+                            $(".card").not(".done").toggleClass("flipped");
+                        }, 2000);
+                    }
                 }
                 clicks++;
                 $("#numClicks").text(clicks);
