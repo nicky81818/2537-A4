@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
     <script src="index.js" defer></script>
@@ -19,36 +20,10 @@
         <h3>Number of clicks: <span id="numClicks">0</span></h3>
         <h3>Number of pairs matched: <span id="numPairs">0</span></h3>
         <h3>Total number of pairs: <span id="totalPairs">0</span></h3>
-        <h2>You have <span id="totalTime"></span> seconds. <span id="timer"></span> seconds left!</h2>
+        <h2 id="timeResults">You have <span id="totalTime"></span> seconds. <span id="timer"></span> seconds left!</h2>
         <div class="buttons">
             <button id="resetBtn">Reset</button>
             <button id="startBtn">Start</button>
-        </div>
-    </div>
-    <div id="game_grid">
-        <div id="card1"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/001.png" alt=""></div>
-            <div class="back_face"><img src="pokeball.png" alt=""></div>
-        </div>
-        <div id="card2"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/001.png" alt=""></div>
-            <div class="back_face"><img src="quickball.png" alt=""></div>
-        </div>
-        <div id="card3"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/002.png" alt=""></div>
-            <div class="back_face"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt=""></div>
-        </div>
-        <div id="card4"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/002.png" alt=""></div>
-            <div class="back_face"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt=""></div>
-        </div>
-        <div id="card5"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/003.png" alt=""></div>
-            <div class="back_face"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt=""></div>
-        </div>
-        <div id="card6"class="card">
-            <div class="front_face"><img src="https://raw.githubusercontent.com/nabil828/COMP2530-s23-A4-Sample-Code/2f94ce45c10c45364cb110c8e73f4ae85cd1802b/003.png" alt=""></div>
-            <div class="back_face"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt=""></div>
         </div>
     </div>
 </body>
