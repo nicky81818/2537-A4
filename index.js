@@ -8,7 +8,6 @@ let time = 100 * 1000; // 100 seconds
 function getPokemon(gamemode) {
     let pokemonURLS = []
     let randomNums = randomList(gamemode)
-    // console.log(randomNums)
     for (let i=0; i < gamemode; i++) {
         console.log(randomNums[i])
         pokemonURLS.push(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomNums[i]}.png`)
@@ -161,5 +160,20 @@ $(document).ready(function() {
             }
         });
     });
-
+    $("#loveMode").click(function() {
+        $("#normalMode").removeClass("active");
+        $(this).addClass("active");
+        $("#game_grid").css("background-color", "pink")
+        $("#game_grid").css("border-color", "deeppink")
+        $(".back_face img").attr("src", "loveball.png")
+        console.log("love mode");
+    });
+    $("#normalMode").click(function() {
+        $("#loveMode").removeClass("active");
+        $(this).addClass("active");
+        $("#game_grid").css("background-color", "white")
+        $("#game_grid").css("border-color", "cornflowerblue")
+        $(".back_face img").attr("src", "pokeball.png")
+        console.log("love mode");
+    });
 });
